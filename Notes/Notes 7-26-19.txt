@@ -1,0 +1,13 @@
+Front End
+	Static HTML Mostly
+Admin (Back End)
+	User Management (login)
+	React App
+	API for making changes to database, authen (node.js)
+Database
+File Storage
+
+① Figure out what routes will look like, what they will do, what params they will take (e.g. file upload route)
+② Start creating routes
+③ Learn how to upload files (node express file uploading)
+④ Look up Mocha.js, Jasmine.js (test runners)
