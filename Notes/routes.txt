@@ -1,0 +1,20 @@
+CarlLandow.com 2.0
+
+Routes
+    / : Main page on which all the images will be presented at once
+    /login : Login page
+        username
+        password
+    /admin : Admin page that will allow:
+        * Addition of images
+        * Deletion of images
+        * Rearranging images
+    /museum-mode : Displays one image at a time
+        * filter is still present
+        * Has up/down/left/right arrows to navigate to the adjacent images
+    /about-the-artist : Standard page with infor about the artist
+    /file-upload : POST route that will add an image to website
+        * Params:
+            image name
+            the image itself?
+            image category (portrait, landscape, architecture, or still-life)
