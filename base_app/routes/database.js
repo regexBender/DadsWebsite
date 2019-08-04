@@ -14,9 +14,9 @@ function database() {
 
     _db = mysql.createConnection({
         host    : "localhost",
-        user    : "alandow",
-        password: "otter",
-        database: "alec"
+        user    : "root",
+        password: "root",
+        database: "dadswebsite"
     });
 
     _db.connect( (err) => {
