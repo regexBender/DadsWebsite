@@ -1,0 +1,209 @@
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(175,175,175,1);
+    -webkit-box-shadow: 0 0 10px rgba(255,255,255,1);
+}
+
+
+.header {
+ /* background-color: yellow;*/
+	height: 40px;
+	width: 300px;
+	margin-right: auto;
+	/*margin-left: auto;*/
+	margin-top:25px;
+	margin-bottom:75px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	font-size: 34;
+	color: white;
+	text-align:right;
+}
+
+.wrap {
+	/*height:100%;*/
+	width: 630;
+}
+
+/* Whole middle, excluding right bar */
+.wrap2 {
+	/*height:100%;*/
+	width: 1230;
+	float: left;
+	/*background-color: blue;*/ 
+}
+/*//////////////////*/
+
+.wrap3 {
+	/*height:100%;*/
+	width: 100%;
+	float: left;
+		position:fixed;
+    top:0px;
+    bottom:0px;
+    left:2px;
+    right:0px;
+}
+}
+
+.outerwrap {
+	/*width: 1150px;*/
+	float: left;
+	position:fixed;
+    top:0px;
+    bottom:0px;
+    left:2px;
+    right:0px;
+
+border-style: solid;
+    border-color: red;
+}
+.main {
+	height: 540px;
+	/*width: 300px;*/
+	/*background-color: red;*/
+	position: relative;
+	float: right;
+	text-align: left;
+}
+
+/* Main Middle Part */
+.main2 {
+	height: 540px;
+	width: 695px;
+	position: absolute;
+	margin-left: 300px;
+	/*float: right;*/
+	text-align: left;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: lighter;
+	letter-spacing: 1px;
+		/*
+		border-style: solid;
+    border-color: yellow 
+		*/
+}
+/*///////////////////*/
+
+/* Right Bar */
+.main3 {
+	/* background-color: red; */
+	height: 540px;
+	width: 230px;
+	position: absolute;
+	margin-left: 900px;
+	text-align: left;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: lighter;
+	letter-spacing: 1px;
+}
+/*///////////////////*/
+
+.about {
+	height: 540px;
+	width: 800px;
+	position: absolute;
+	margin-left:300px;
+	float: right;
+	text-align: left;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: lighter;
+	letter-spacing: 1px;
+    /*-webkit-column-count: 2;*/ /* Chrome, Safari, Opera */
+    /*-moz-column-count: 2;*/ /* Firefox */
+    /*column-count: 2;*/
+	padding-left:30px;
+/*	text-align: justify; */
+/*  text-justify: inter-word;
+	-webkit-hyphens: auto;
+   -moz-hyphens: auto;
+    -ms-hyphens: auto;
+        hyphens: auto;*/
+
+}
+
+.heading{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 25px;
+	color:#edb315;
+	text-align:center;
+
+}
+
+
+.side {
+	/*background-color:blue;*/
+	float: left;
+	position: relative;
+	width: 300px;
+}
+
+.Home {
+	height: 35px;
+	width: 200px;
+	background-image:url('Images/Home.png');
+	background-repeat: no-repeat;
+}
+
+.Home:hover {
+	cursor: pointer;
+	background-image: url('Images/Home-hover.png')
+}
+
+/*#edb315;*/
+
+.SideText {
+	color: white;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+  font-weight: lighter;
+	letter-spacing: 1px;
+	/*font-family:'Helvetica-Light', Arial, sans-serif;
+	font-weight: 1;*/
+	font-size: 25;
+	text-align: right;
+}
+.SideText:hover {
+	cursor: pointer;
+	color:#edb315
+}
+
+.llink {
+	color: white;
+}
+.llink:hover {
+	cursor: pointer;
+	color:#edb315
+}
+
+.bottom {
+	/*background-color: yellow;*/
+	color: white;
+	font-size: 12;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: lighter;
+	letter-spacing: 1px;
+	/*clear: both;*/
+	position:absolute;
+  margin-top:540px;
+	width:630px;
+	text-align: left;
+	padding-top: 10px;
+}
+
+.ImgText {
+  color: white;
+	font-size: 28;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: lighter;
+	letter-spacing: 1px;
+	text-align: left;
+}
+
+
