@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
                         id="searchbar"
                         name="searchbar"
                         value={this.state.textInput}
-                        placeholder="Search for a picture"
+                        placeholder="Search for a picture by name"
                     />
                 </form>
             </div>

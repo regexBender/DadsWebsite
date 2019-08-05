@@ -13,8 +13,11 @@ class App extends React.Component {
     render() {
         return (
             <div className = "App" id = "outer-container">
+
                 <SideBar />
+
                 <div className = "flex-container" id = "page-wrap">
+                    
                     <SearchBar />
                     
                     <div className = "filter-container">
@@ -22,6 +25,7 @@ class App extends React.Component {
                             label = "All" 
                             selected = {true}
                             updateFilter = {this.updateFilter}/>
+
                         <FilterOption 
                             label = "Portraits" 
                             selected = {true}
@@ -43,7 +47,7 @@ class App extends React.Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     } 
 }
 
