@@ -131,14 +131,63 @@ body {
   background: rgba(0, 0, 0, 0.3);
 }
 
-/* SearchBar CSS */
+/* SearchBar */
 .input_text {
     width: 60%;
     font-size: 20px;
+    /*
     display: inline-block;
     position: relative;
-
+*/
     padding: 14px 20px;
     border-radius: 4px;
     box-sizing: border-box;
+
+    /*margin: 100px 0 0 0;*/
+}
+
+/* Search Filters */
+.filter-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.option {
+  width: max-content;
+  border-radius: 4px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+
+  padding: 10px 10px 10px 10px;
+  margin: 10px 5px 10px 5px;
+}
+
+.option:hover {
+  cursor: pointer
+}
+
+.option-not-selected {
+  background: #373a47;
+
+  color: white
+
+}
+
+.option-selected {
+  background: #edb315;
+
+  color: black;
+
+   /*box-shadow: 0 0 20px white;*/
+
+}
+
+/* Layout */
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: 100px 0 0 0;
 }

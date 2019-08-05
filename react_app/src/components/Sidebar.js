@@ -10,8 +10,8 @@ export default props => {
         disableOverlayClick
         disableAutoFocus
         noOverlay
-        pageWrapId = {"pageWrap"}
-        outerContainerId = {"outerContainer"}
+        pageWrapId = {"page-wrap"}
+        outerContainerId = {"outer-container"}
         >
 
       <div className="menu-item header">
