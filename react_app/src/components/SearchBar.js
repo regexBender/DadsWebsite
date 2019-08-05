@@ -13,22 +13,24 @@ class SearchBar extends React.Component {
     }
 
     render () {
-        <div className="add_item">
-            <form>
-                <input
-                    ref = {
-                        searchInput => (this.searchInput = searchInput)
-                    }
-                    onChange={ this.handleTextInput }
-                    className="input_text"
-                    type="text"
-                    id="searchbar"
-                    name="searchbar"
-                    value={this.state.textInput}
-                    placeholder="Search for a picture"
-                />
-            </form>
-        </div>
+        return (
+            <div className="add_item">
+                <form>
+                    <input
+                        ref = {
+                            searchInput => (this.searchInput = searchInput)
+                        }
+                        onChange={ this.handleTextInput }
+                        className="input_text"
+                        type="text"
+                        id="searchbar"
+                        name="searchbar"
+                        value={this.state.textInput}
+                        placeholder="Search for a picture"
+                    />
+                </form>
+            </div>
+        )
     }
 }
 

@@ -1,15 +1,18 @@
 import React from 'react';
-import { slide as Menu } from 'react-burger-menu';
+import { push as Menu } from 'react-burger-menu';
 import '../style.css';
 
 export default props => {
   return (
 
-
     <Menu
         isOpen = {true}
         disableOverlayClick
-        disableAutoFocus>
+        disableAutoFocus
+        noOverlay
+        pageWrapId = {"pageWrap"}
+        outerContainerId = {"outerContainer"}
+        >
 
       <div className="menu-item header">
         Carl Landow<br />

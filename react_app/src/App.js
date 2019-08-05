@@ -1,13 +1,15 @@
 import React from 'react';
-import Sidebar from './components/Sidebar';
+import SideBar from './components/SideBar';
+import SearchBar from './components/SearchBar';
 import './style.css';
 
 function App() {
     return (
-        <div className = "App">
+        <div className = "App" id = "outerContainer">
             <SideBar />
-
-            <SearchBar />
+            <div id = "pageWrap">
+                <SearchBar />
+            </div>
         </div>
     );
 }
