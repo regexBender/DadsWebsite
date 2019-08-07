@@ -1,16 +1,18 @@
 const express = require('express')
 const database = require('./routes/database').database
+const gallery = require('./routes/gallery')
 const login = require('./routes/login')
 
 const base_app = express()
 const connection = database()
 
+base_app.use("/routes/gallery", gallery)
 base_app.use("/routes/login", login)
 
 const port = 3001
 
 base_app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('root route of CarlLandow.com')
 });
 
 base_app.listen(port, () => {
