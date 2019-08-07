@@ -47,6 +47,7 @@ class App extends React.Component {
                             label = "architecture" 
                             selected = {this.state.portraits}
                             updateFilter = {this.updateFilter}/>
+                            
                         <FilterOption 
                             label = "still_life" 
                             selected = {this.state.portraits}

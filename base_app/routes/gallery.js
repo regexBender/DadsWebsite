@@ -16,12 +16,11 @@ gallery.use( (req, res, next) => {
   });
 
   
-gallery.get("/:label", urlencodedParser, (req, res, next) => {
+gallery.get("/", urlencodedParser, (req, res, next) => {
 
-    let label = req.params.label;
+    //let label = req.params.label;
+    //console.log(`label: ${label}`);
 
-    console.log(`label: ${label}`);
-/*
     connection.query("SELECT * FROM `images`", (err, rows, fields) => {
         if (err) {
             res.status(400);
@@ -33,7 +32,7 @@ gallery.get("/:label", urlencodedParser, (req, res, next) => {
         res.status(200);
         res.json(rows);
     });
-    */
-   res.status(200);
-        res.json("testing123");
+
 })
+
+module.exports = gallery; 

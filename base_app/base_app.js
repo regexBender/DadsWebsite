@@ -6,8 +6,8 @@ const login = require('./routes/login')
 const base_app = express()
 const connection = database()
 
-base_app.use("/routes/gallery", gallery)
-base_app.use("/routes/login", login)
+base_app.use("/gallery", gallery)
+base_app.use("/login", login)
 
 const port = 3001
 
