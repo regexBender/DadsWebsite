@@ -12,6 +12,7 @@ class Main extends React.Component {
         return (
             <Router>
                 <Route exact path="/" component={App}></Route>
+                <Route exact path="/gallery" component={App}></Route>
             </Router>
         )
     }

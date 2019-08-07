@@ -2,6 +2,7 @@ import React from 'react';
 
 
 class FilterOption extends React.Component {
+
     state = {
         selectedState: this.props.selected
     }
@@ -10,7 +11,7 @@ class FilterOption extends React.Component {
          this.setState({
                 selectedState: !this.state.selectedState
         },  
-            this.props.updateFilter()
+            this.props.updateFilter(this.props.label)
          );
 
          
@@ -22,11 +23,13 @@ class FilterOption extends React.Component {
     }
 
     render () {
+        let display_name = this.props.label.replace("_", " ");
+
         return (
             <div onClick={ this.handleClick }
                 className={ `option ${ this.getClass() }` }
                 id={`filter-${ this.props.label }`} >
-                { this.props.label }
+                { display_name }
             </div>
         )
     }

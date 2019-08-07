@@ -6,8 +6,19 @@ import './style.css';
 
 class App extends React.Component {
 
-    updateFilter() {
-        console.log("Updating Filter")
+    state = {
+        portraits: false,
+        landscapes: false,
+        architecture: false,
+        still_life: false
+    }
+
+    updateFilter = (this_label) => {
+        console.log("Updating Filter");
+
+        this.setState({
+           [this_label]: !this.state[this_label]
+        });
     }
 
     render() {
@@ -21,28 +32,24 @@ class App extends React.Component {
                     <SearchBar />
                     
                     <div className = "filter-container">
+
                         <FilterOption 
-                            label = "All" 
-                            selected = {true}
+                            label = "portraits" 
+                            selected = {this.state.portraits}
                             updateFilter = {this.updateFilter}/>
 
                         <FilterOption 
-                            label = "Portraits" 
-                            selected = {true}
+                            label = "landscapes" 
+                            selected = {this.state.portraits}
                             updateFilter = {this.updateFilter}/>
 
                         <FilterOption 
-                            label = "Landscapes" 
-                            selected = {true}
-                            updateFilter = {this.updateFilter}/>
-
-                        <FilterOption 
-                            label = "Architecture" 
-                            selected = {true}
+                            label = "architecture" 
+                            selected = {this.state.portraits}
                             updateFilter = {this.updateFilter}/>
                         <FilterOption 
-                            label = "Still Life" 
-                            selected = {true}
+                            label = "still_life" 
+                            selected = {this.state.portraits}
                             updateFilter = {this.updateFilter}/>
                     </div>
                 </div>

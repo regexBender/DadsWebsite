@@ -18,15 +18,15 @@ export default props => {
         Carl Landow<br />
         Artist
       </div>
-      <a className="menu-item SideText" href="/">
+      <a className="menu-item SideText" href="/gallery">
         Gallery
       </a>
 
-      <a className="menu-item SideText" href="/">
+      <a className="menu-item SideText" href="/about">
         About the Artist
       </a>
 
-      <a className="menu-item SideText" href="/">
+      <a className="menu-item SideText" href="/curator-mode">
         Curator Mode
       </a>
     </Menu>
