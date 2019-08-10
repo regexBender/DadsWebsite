@@ -195,3 +195,16 @@ body {
 
   padding: 100px 0 0 0;
 }
+
+/* Loading */
+.loading {
+  color: white
+}
+
+/* Images */
+
+.first-image {
+  max-width: 90vw;
+  max-height: 70vh;
+  padding: 20px 0 0 0;
+}
