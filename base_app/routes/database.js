@@ -1,13 +1,15 @@
+const express = require('express')
 const assert = require("assert");
 const mysql = require("mysql");
 
 let _db;
+const database_express_loader = express();
 
 module.exports = {
     database
 }
 
-function database() {
+function database(next) {
     if (_db) {
         return _db;
     }
@@ -22,8 +24,13 @@ function database() {
     _db.connect( (err) => {
 
         if (err) {
+            console.log("\n");
             console.log(err);
-            return(err);
+
+            console.log("\n");
+            console.log("Remember to start the database.");
+
+            return err;
         }
 
         console.log("Connected to database");
@@ -32,4 +39,8 @@ function database() {
     return _db;
 }
 
-database() // Singleton instance
+database_express_loader.use( (req, res, next) => {
+    database() // Singleton instance
+    next();
+})
+

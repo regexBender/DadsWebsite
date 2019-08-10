@@ -15,6 +15,46 @@ base_app.get('/', (req, res) => {
     res.send('root route of CarlLandow.com')
 });
 
-base_app.listen(port, () => {
+const server = base_app.listen(port, () => {
     console.log(`base_app listening on port ${port}!`)
 })
+
+
+
+// Quit the app gracefully
+function endDatabaseConnection(callback) {
+    console.log("\n");
+    console.log("Closing the database connection...");
+    connection.end();
+    callback();
+}
+
+function endServer(callback) {
+    console.log("\n");
+    console.log("Closing the node server...");
+    server.close();
+    callback();
+}
+
+function killProcess() {
+    console.log("\n");
+    console.log("Exiting the process...");
+    process.exit();
+}
+
+
+process.on("SIGINT", () => {
+
+    console.log("\n");
+    console.log("----------------------------------------------");
+    console.log("Caught interrupt signal");
+    endDatabaseConnection(() => {
+        console.log("The database connection is closed.");
+        
+        endServer(() => {
+            console.log("The node server is closed.")
+            killProcess();
+        });
+    });
+
+});
