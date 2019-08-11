@@ -82,6 +82,17 @@ class Curator extends React.Component {
                                 updateFilter = {this.updateFilter}/>
                         </div>
 
+                        <div class="container">
+
+                            <form method="post" action="#" id="#">
+                                <div class="form-group files color">
+                                    <label>Upload Your File </label>
+                                    <input type="file" class="form-control" multiple="" />
+                                </div>
+                            </form>
+
+                        </div>
+         
                         <Picture 
                             label = {this.state.images[0].label}
                             img_name = {this.state.images[0].name}
