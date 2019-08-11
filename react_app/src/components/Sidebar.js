@@ -1,5 +1,5 @@
 import React from 'react';
-import { push as Menu } from 'react-burger-menu';
+import { push as Menu } from 'react-burger-menu'; // push
 import '../style.css';
 
 export default props => {

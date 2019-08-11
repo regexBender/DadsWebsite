@@ -13,6 +13,7 @@ class Main extends React.Component {
             <Router>
                 <Route exact path="/" component={App}></Route>
                 <Route exact path="/gallery" component={App}></Route>
+                <Route exact path="/curator" component={Curator}></Route>
             </Router>
         )
     }
