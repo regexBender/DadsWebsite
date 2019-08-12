@@ -3,6 +3,7 @@ import FilterOption from './components/FilterOption';
 import SearchBar from './components/SearchBar';
 import SideBar from './components/SideBar';
 import Picture from './components/Picture';
+import DropZone from './components/DropZone';
 
 import './style.css';
 
@@ -91,6 +92,8 @@ class Curator extends React.Component {
                             </form>
 
                         </div>
+
+                        <DropZone />
          
                         <Picture 
                             label = {this.state.images[0].label}
