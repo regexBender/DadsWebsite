@@ -48,6 +48,15 @@ class Curator extends React.Component {
         });
     }
 
+
+    handleSubmit = (img_name, label, file, event) => {
+        event.preventDefault();
+        console.log(img_name);
+        console.log(label);
+        console.log(file);
+    }
+
+
     render() {
         console.log(this.state.images);
         if (this._isMounted && this.state.images) {
@@ -83,7 +92,7 @@ class Curator extends React.Component {
                                 updateFilter = {this.updateFilter}/>
                         </div>
 
-                        <DropZone />
+                        <DropZone handleSubmit = {this.handleSubmit}/>
          
                         <Picture 
                             label = {this.state.images[0].label}
