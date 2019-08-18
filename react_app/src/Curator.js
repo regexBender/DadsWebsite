@@ -83,16 +83,6 @@ class Curator extends React.Component {
                                 updateFilter = {this.updateFilter}/>
                         </div>
 
-                        <div className="container">
-
-                            <form method="post" action="#" id="#">
-                                <div className="form-group files color">
-                                    <input type="file" className="form-control" multiple="" />
-                                </div>
-                            </form>
-
-                        </div>
-
                         <DropZone />
          
                         <Picture 
