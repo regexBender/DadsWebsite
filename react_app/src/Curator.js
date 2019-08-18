@@ -83,11 +83,11 @@ class Curator extends React.Component {
                                 updateFilter = {this.updateFilter}/>
                         </div>
 
-                        <div class="container">
+                        <div className="container">
 
                             <form method="post" action="#" id="#">
-                                <div class="form-group files color">
-                                    <input type="file" class="form-control" multiple="" />
+                                <div className="form-group files color">
+                                    <input type="file" className="form-control" multiple="" />
                                 </div>
                             </form>
 
@@ -98,6 +98,7 @@ class Curator extends React.Component {
                         <Picture 
                             label = {this.state.images[0].label}
                             img_name = {this.state.images[0].name}
+                            alt = {this.state.images[0].name}
                             className = "first-image"
                         />
 
