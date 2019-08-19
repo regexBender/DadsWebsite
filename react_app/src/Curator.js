@@ -8,6 +8,13 @@ import DropZone from './components/DropZone';
 import './style.css';
 
 import axios from 'axios';
+const qs = require('qs');
+
+const config = {
+    headers: {
+       'Content-Type': 'application/x-www-form-urlencoded',
+    }
+};
 
 class Curator extends React.Component {
     _isMounted = false;
@@ -54,6 +61,19 @@ class Curator extends React.Component {
         console.log(img_name);
         console.log(label);
         console.log(file);
+
+        const data = {
+            file: file,
+            img_name: img_name,
+            label: label
+        }
+
+        console.log(data);
+
+        axios.post("http://localhost:3001/upload", qs.stringify(data), config)
+        . then( (res) => { // then print response status
+            console.log(res) //statusText
+         })
     }
 
 

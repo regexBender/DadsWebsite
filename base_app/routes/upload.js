@@ -17,21 +17,27 @@ upload.use( (req, res, next) => {
 
 upload.use(cors());
 
-app.post('/upload', (req, res) => { 
+upload.post('/', urlencodedParser, (req, res, next) => { 
 
-    const storage = multer.diskStorage({
+    let file_name = req.body.img_name;
+    let label = req.body.label;
+    console.log("HERE 1 " + file_name + " " + label ) // file_name + " " + label
+    const storage = multer.diskStorage({    
         destination: (req, file, cb) => {
-        cb(null, `public/images/${file.label}`)
-      },
-      filename: (req, file, cb) => {
-        cb(null, file.file_name)
-      }
+          console.log("HERE 2")
+            cb(null, `public/images/${label}`)
+        },
+        filename: (req, file, cb) => {
+          console.log("HERE 3:" + file.name)
+          cb(null, file.name)
+        }
     })
     
     
     const upload_multer = multer({ storage: storage }).single('file')
 
     upload_multer(req, res, (err) => {
+      console.log(JSON.stringify(req.body.file[path]));
            if (err instanceof multer.MulterError) {
                return res.status(500).json(err)
            } else if (err) {

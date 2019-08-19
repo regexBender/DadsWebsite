@@ -2,12 +2,14 @@ const express = require('express')
 const database = require('./routes/database').database
 const gallery = require('./routes/gallery')
 const login = require('./routes/login')
+const upload = require('./routes/upload')
 
 const base_app = express()
 const connection = database()
 
 base_app.use("/gallery", gallery)
 base_app.use("/login", login)
+base_app.use("/upload", upload)
 
 const port = 3001
 

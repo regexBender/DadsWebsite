@@ -21,9 +21,7 @@ const Container = styled.div`
 `;
 
 
-const submitImage = (props, file) => {
-  props.handleSubmit.bind(file)
-}
+
 
 //let img_name;
 
@@ -38,7 +36,7 @@ function DropZone(props) {
     <form 
       key={file.path} 
       id="upload_form" 
-      onSubmit = {props.handleSubmit.bind(this, img_name, img_name,file)} >
+      onSubmit = {props.handleSubmit.bind(this, img_name.value, label.value,file)} >
       <li key={file.path}>
         <div style={{display: 'flex'}}>
           <div>
@@ -50,10 +48,10 @@ function DropZone(props) {
                 ref = {img_name => (setImg_name(img_name))} 
                 id={`image_name_${++counter}`} 
                 name={`image_name_${++counter}`}  
-                defaultValue={file.path.replace(/\..*/, "").replace(/_/, " ")} />
+                defaultValue={file.path.replace(/\..*/, "").replace(/_/g, " ")} />
           </div>
           <div>
-            <select>
+            <select ref = {label => setLabel(label)}>
               <option value="portraits">Portraits</option>
               <option value="landscapes">Landscapes</option>
               <option value="architecture">Architecture</option>
@@ -63,6 +61,7 @@ function DropZone(props) {
         </div>
       </div>
       </li>
+      <input type="file" name="file" />
       <input  
         value="Upload" 
         type="submit" />
