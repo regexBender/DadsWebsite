@@ -24,7 +24,8 @@ class Curator extends React.Component {
         landscapes: false,
         architecture: false,
         still_life: false,
-        images: []
+        images: [],
+        files: null
     }
 
     componentDidMount() {
@@ -62,20 +63,29 @@ class Curator extends React.Component {
         console.log(label);
         console.log(file);
 
-        const data = {
-            file: file,
-            img_name: img_name,
-            label: label
-        }
+
+        const data = new FormData();
+        data.append('file', this.state.files[0]);
+        data.append('filename', this.fileName.value);
+        data.append('img_name', img_name);
+        data.append('label', label);
 
         console.log(data);
 
-        axios.post("http://localhost:3001/upload", qs.stringify(data), config)
+        axios.post("http://localhost:3001/upload", data, config)
         . then( (res) => { // then print response status
             console.log(res) //statusText
          })
+         .catch( (error) => {
+             console.log(error)
+         })
     }
 
+    onDrop(acceptedFiles) {
+        this.setState({
+            files: acceptedFiles
+        })
+    }
 
     render() {
         console.log(this.state.images);
@@ -112,7 +122,10 @@ class Curator extends React.Component {
                                 updateFilter = {this.updateFilter}/>
                         </div>
 
-                        <DropZone handleSubmit = {this.handleSubmit}/>
+                        <DropZone 
+                            onDrop = {(files) => this.onDrop(files)} 
+                            handleSubmit = {this.handleSubmit}>
+                        </DropZone>
          
                         <Picture 
                             label = {this.state.images[0].label}
