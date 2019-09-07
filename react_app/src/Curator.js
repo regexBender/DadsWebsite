@@ -12,7 +12,7 @@ const qs = require('qs');
 
 const config = {
     headers: {
-       'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'multipart/form-data'
     }
 };
 
@@ -65,8 +65,8 @@ class Curator extends React.Component {
 
 
         const data = new FormData();
-        data.append('file', this.state.files[0]);
-        data.append('filename', this.fileName.value);
+        data.append('file', file);
+        data.append('filename', img_name);
         data.append('img_name', img_name);
         data.append('label', label);
 

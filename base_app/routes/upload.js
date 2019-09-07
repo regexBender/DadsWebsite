@@ -1,30 +1,21 @@
 const express = require('express');
-const multer = require('express-fileupload');
-const cors = require('cors');
 
 const upload = express.Router();
-
-
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-
-upload.use( (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+// upload.post('/', urlencodedParser, (req, res, next) => { 
+upload.post('/', (req, res, next) => { 
+  console.log('Data: ', {
+    body: req.body,
+    files: req.files
   });
-
-upload.use(cors());
-
-upload.post('/', urlencodedParser, (req, res, next) => { 
 
     let file_name = req.body.img_name;
     let label = req.body.label;
-    
-    
+
     // From: https://codeburst.io/asynchronous-file-upload-with-node-and-react-ea2ed47306dd
-    console.log(req);
+    console.log(req.files);
     let imageFile = req.files.file;
 
     imageFile.mv(`${__dirname}/public/images/${label}/${file_name}.jpg`, function(err) {
