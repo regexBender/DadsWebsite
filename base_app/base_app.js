@@ -3,14 +3,9 @@ const database = require('./routes/database').database
 const gallery = require('./routes/gallery')
 const login = require('./routes/login')
 const upload = require('./routes/upload')
-const fileUpload = require('express-fileupload');
-const cors = require('cors');
 
 const base_app = express()
 const connection = database()
-
-base_app.use(fileUpload);
-base_app.use(cors());
 
 base_app.use("/gallery", gallery)
 base_app.use("/login", login)
