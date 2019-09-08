@@ -128,8 +128,9 @@ class Curator extends React.Component {
                         </DropZone>
          
                         <Picture 
-                            label = {this.state.images[0].label}
                             img_name = {this.state.images[0].name}
+                            label = {this.state.images[0].label}
+                            path = {this.state.images[0].path}
                             alt = {this.state.images[0].name}
                             className = "first-image"
                         />
