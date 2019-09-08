@@ -37,11 +37,11 @@ upload.post('/',  (req, res, next) => {
       console.log(`file name: ${req.body.img_name}`)
       
       req.file.filename = req.body.img_name;
-      fs.renameSync(req.file.path, 
-        req.file.path.replace(/\w+?\./, `images\\${req.body.label}\\${req.body.img_name}.`)
+      fs.renameSync(req.file.path, // TODO: fix regex
+        req.file.path.replace(/[^\\]+?\.\w+/, `images\\${req.body.label}\\${req.body.img_name}.jpg`)
       );
       console.log(req.file)
-      console.log(req.file.path.replace(/\w+?\./, req.body.img_name + '.'));
+      console.log(req.file.path);
       res.status(200);
       res.json("file added");
       console.log("file added 2");
