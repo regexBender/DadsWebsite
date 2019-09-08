@@ -36,7 +36,7 @@ function DropZone(props) {
     <form 
       key={file.path} 
       id="upload_form" 
-      onSubmit = {props.handleSubmit.bind(this, img_name.value, label.value,file)} >
+      onSubmit = {(e, img_name, label, file) => {e.preventDefault(); console.log('TEST')}}>//props.handleSubmit(img_name.value, label.value, file)} >
       <li key={file.path}>
         <div style={{display: 'flex'}}>
           <div>
@@ -45,13 +45,16 @@ function DropZone(props) {
           <div>
             <input 
                 type="text"
+                onInput = {() => console.log(img_name.value)}
                 ref = {img_name => (setImg_name(img_name))} 
                 id={`image_name_${++counter}`} 
                 name={`image_name_${++counter}`}  
                 defaultValue={file.path.replace(/\..*/, "").replace(/_/g, " ")} />
           </div>
           <div>
-            <select ref = {label => setLabel(label)}>
+            <select 
+              onChange = { (e) => console.log(label.value)} 
+              ref = {label => setLabel(label)}>
               <option value="portraits">Portraits</option>
               <option value="landscapes">Landscapes</option>
               <option value="architecture">Architecture</option>
