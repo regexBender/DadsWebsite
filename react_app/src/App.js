@@ -105,7 +105,9 @@ class App extends React.Component {
                             className = "first-image"
                         />
 
-                        {this.displayPictures(this.state.images)}
+                        <div className = "gallery-container">
+                            {this.displayPictures(this.state.images)}
+                        </div>    
 
                     </div>
                 </div>
