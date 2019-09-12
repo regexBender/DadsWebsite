@@ -57,7 +57,7 @@ class Curator extends React.Component {
     }
 
 
-    handleSubmit = (img_name, label, file, event) => {
+    handleSubmit = (event, img_name, label, file) => {
         event.preventDefault();
         console.log(img_name);
         console.log(label);
@@ -79,6 +79,7 @@ class Curator extends React.Component {
          .catch( (error) => {
              console.log(error)
          })
+         
     }
 
     onDrop(acceptedFiles) {

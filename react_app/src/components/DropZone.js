@@ -36,7 +36,7 @@ function DropZone(props) {
     <form 
       key={file.path} 
       id="upload_form" 
-      onSubmit = {(e, img_name, label, file) => {e.preventDefault(); console.log('TEST')}}>//props.handleSubmit(img_name.value, label.value, file)} >
+      onSubmit = {(event) => props.handleSubmit(event, img_name.value, label.value, file)}> 
       <li key={file.path}>
         <div style={{display: 'flex'}}>
           <div>
