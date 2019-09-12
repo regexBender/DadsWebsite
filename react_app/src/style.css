@@ -212,6 +212,9 @@ body {
   padding: 20px 0 0 0;
 }
 
+.gallery-image {
+  max-width: 33%
+}
 
 /* Upload Form */
 /* Copied from https://bootsnipp.com/snippets/DOXy4 */

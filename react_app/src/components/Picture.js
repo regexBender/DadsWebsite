@@ -11,7 +11,7 @@ class Picture extends React.Component {
         // Use the first label as the path if there is more than one label
         let label = this.props.label.split(/\s*,\s*/)[0];
  
-        let path = `/images/${label}/${this.props.img_name}.jpg`;
+        let path = Boolean(this.props.path) ? this.props.path : `/images/${label}/${this.props.img_name}.jpg`;
 
         return (
             <div id={this.props.img_name} >

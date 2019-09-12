@@ -47,6 +47,23 @@ class App extends React.Component {
         });
     }
 
+    displayPictures(pictureArray) {
+        let picturesWithPath = pictureArray.filter( (picture) => {
+            return Boolean(picture.path);
+        } )
+
+        return picturesWithPath.map( (picture) => {
+            let props = {
+                id      : picture.id,
+                img_name: picture.name,
+                label   : picture.label,
+                path    : picture.path
+            }
+
+            return <Picture key = {picture.id} {...props} className="gallery-image"/>;
+        })
+    }
+
     render() {
         console.log(this.state.images);
         if (this._isMounted && this.state.images) {
@@ -87,6 +104,8 @@ class App extends React.Component {
                             img_name = {this.state.images[0].name}
                             className = "first-image"
                         />
+
+                        {this.displayPictures(this.state.images)}
 
                     </div>
                 </div>
