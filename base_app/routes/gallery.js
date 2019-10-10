@@ -1,5 +1,7 @@
 const express = require('express')
 const connection = require('../routes/database').db;
+const helpers = require('../lib/helpers');
+
 const bodyParser = require("body-parser");
 
 const gallery = express.Router();
@@ -12,22 +14,16 @@ gallery.use( (req, res, next) => {
     next();
   });
 
-gallery.get("/", urlencodedParser, (req, res, next) => {
-
-    //let label = req.params.label;
-    //console.log(`label: ${label}`);
-
-    connection.query("SELECT * FROM `images`", (err, rows, fields) => {
-        if (err) {
-            res.status(500);
-            res.send(err);
-        } else {
-            res.status(200);
-            res.json(rows);
-        }
-    });
-
-})
+gallery.get("/", urlencodedParser, async (req, res, next) => {
+    try {
+        const images = await helpers.getImages();
+        res.status(200);
+        res.json(images);
+    } catch (err) {
+        res.status(500);
+        res.json(err);
+    }
+});
 
 gallery.post("/", urlencodedParser, (req, res, next) => {
 

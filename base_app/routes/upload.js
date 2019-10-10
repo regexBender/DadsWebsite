@@ -2,12 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const multer  = require('multer');
 const fs = require('fs');
-const database = require('../routes/database').database
+const connection = require('../routes/database').db;
 
 const upload = express.Router();
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
-const connection = database()
 
 upload.use(cors());
 
@@ -83,7 +82,7 @@ upload.post('/',  (req, res, next) => {
         ])
       }
       
-     
+    
       res.status(200);
       res.json("file added");
       console.log("file added");
