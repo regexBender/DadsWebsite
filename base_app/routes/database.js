@@ -1,46 +1,25 @@
-const express = require('express')
-const assert = require("assert");
 const mysql = require("mysql");
 
-let _db;
-const database_express_loader = express();
+let db;
 
-module.exports = {
-    database
-}
-
-function database(next) {
-    if (_db) {
-        return _db;
-    }
-
-    _db = mysql.createConnection({
+function initDatabase(callback) {
+    db = mysql.createConnection({
         host    : "localhost",
         user    : "root",
         password: "root",
         database: "dadswebsite"
     });
-
-    _db.connect( (err) => {
-
+    db.connect( (err) => {
         if (err) {
-            console.log("\n");
-            console.log(err);
-
-            console.log("\n");
-            console.log("Remember to start the database.");
-
-            return err;
+            console.error('Unable to connec to database: ', err);
+            process.exit(1);
+            return;
         }
-
-        console.log("Connected to database");
+        callback();
     });
-
-    return _db;
 }
 
-database_express_loader.use( (req, res, next) => {
-    database() // Singleton instance
-    next();
-})
-
+module.exports = {
+    db,
+    initDatabase
+}

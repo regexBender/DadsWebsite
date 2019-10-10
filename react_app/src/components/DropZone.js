@@ -5,9 +5,10 @@ import axios from 'axios';
 
 
 const Container = styled.div`
-  flex: 1;
+  
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 20px;
   border-width: 2px;
@@ -18,6 +19,7 @@ const Container = styled.div`
   color: black;
   outline: none;
   transition: border .24s ease-in-out;
+  width: 100%;
 `;
 
 
@@ -64,7 +66,6 @@ function DropZone(props) {
         </div>
       </div>
       </li>
-      <input type="file" name="file" />
       <input  
         value="Upload" 
         type="submit" />
@@ -79,7 +80,7 @@ function DropZone(props) {
         <p>Drag 'n' drop some files here, or click to select files</p>
       </Container>
       <aside style = {{color: 'white'}}>
-        <h4>Files</h4>
+        
         <ul>{files}</ul>
       </aside>
     </section>
