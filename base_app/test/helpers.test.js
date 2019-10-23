@@ -1,7 +1,8 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
+const database = require('../routes/database');
 const helpers = require('../lib/helpers');
-const database = require('../routes/database.js');
+
 
 describe('lib/helpers', () => {
     describe('add', () => {
@@ -13,13 +14,19 @@ describe('lib/helpers', () => {
     });
     describe('getImages', () => {
         it('returns an error if unable to query images', async () => {
-            sinon.stub(datdbase, "db").returns({
-                query: (query, data, (stuff) => {
+            // sinon.stub(connection, "query").returns({
+            //     query: (query, data, (stuff) => {
 
-                });
-            })
+            //     })
+            // });
+
+            sinon.stub(database, "db").returns({
+                query: 'dog'
+            });
+
             try {
-                await helpers.getImages();
+                let images = await helpers.getImages();
+                
                 expect(1).to.equal('You should never reach here.');
             } catch (err) {
                 expect(err).to.not.deep.equal('cat');
@@ -27,11 +34,13 @@ describe('lib/helpers', () => {
         });
 
         xit('returns an empty array if no images present', () => {
+            expect(1).to.equal(1);
 
         });
 
-        xit('returns images', () => {
-
+        xit('returns images', async () => {
+            let res = await helpers.getImages();
+            expect(res.query).to.equal('dog');
         });
     });
 });
