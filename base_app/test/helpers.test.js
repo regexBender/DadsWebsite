@@ -81,12 +81,13 @@ describe('lib/helpers', () => {
             //     }
             //   });
             
-            sinon.stub(connection, "query").returns(
-                resolve(['dog'])
-            );
-
+            // https://stackoverflow.com/questions/54324649/using-sinon-to-stub-code-inside-a-promise-and-return-a-resolve
+            // https://sinonjs.org/releases/v7.2.2/stubs/#stubyieldsarg1-arg2-
+            sinon.stub(connection, "query").yields(null, ['dog']);
             let res = await helpers.getImages();
-            expect(res[0]).to.equal('dog');
+console.log("Godzilla2")
+
+            return expect(res[0]).to.equal('dog');
             //mock.restore()
             // expect(1).to.equal(1);
             done();
