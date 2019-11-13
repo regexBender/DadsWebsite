@@ -43,10 +43,9 @@ gallery.post("/", urlencodedParser, (req, res, next) => {
         res.status(201);
         console.log(`${label}/${name} added to the database`);
 
-        // Extract this, then test
-        connection.query("SELECT * FROM `images` WHERE id = LAST_INSERT_ID()", (err, rows, fields) => {
-            res.json(rows[0]);
-        });
+        let addedImageRow = getLastInsertedRow();
+        res.json(addedImageRow);
+
     });
 
 })
