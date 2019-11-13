@@ -16,6 +16,18 @@ function getImages() {
     });
 }
 
+function selectImage(imageData) {
+    return new Promise((resolve, reject) => {
+        connection.query("SELECT * FROM `images` WHERE ?", imageData, (err, rows, fields) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(rows);
+            }
+        });
+    });
+}
+
 function getLastInsertedRow() {
     return new Promise((resolve, reject) => {
         connection.query("SELECT * FROM `images` WHERE id = LAST_INSERT_ID()", (err, rows, fields) => {
@@ -30,13 +42,13 @@ function getLastInsertedRow() {
 
 function insertImage(name, label) {
     return new Promise((resolve, reject) => {
-        connection.query("INSERT INTO `images` SET ?", {name: name, label: label}, (err, rows, fields) => {
+        connection.query("INSERT INTO `images` SET ?", {name: name, label: label}, async (err, rows, fields) => {
             if (err) {
                 console.log(err);
                 reject(err);
             } else {
                 try {
-                    const addedImageRow = getLastInsertedRow();
+                    const addedImageRow = await getLastInsertedRow();
                     resolve(addedImageRow);
                 } catch (err) {
                     console.log(err);
@@ -50,6 +62,7 @@ function insertImage(name, label) {
 module.exports = {
     add,
     getImages,
+    selectImage,
     getLastInsertedRow,
     insertImage
 };

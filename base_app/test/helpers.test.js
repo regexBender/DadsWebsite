@@ -6,6 +6,13 @@ const helpers = require('../lib/helpers');
 
 describe('lib/helpers', () => {
     let sandbox;
+    let test_image = {
+        id: 1, 
+        name: "test_image", 
+        label: "architecture", 
+        path: "", 
+        date_added: "2019-08-07T02:41:42.000Z"
+    };
 
     beforeEach(() => {
         sandbox = sinon.createSandbox();
@@ -22,9 +29,10 @@ describe('lib/helpers', () => {
             expect(helpers.add(-1, -1)).to.equal(-2);
         });
     });
+
     describe('getImages', () => {
         it('returns an error if unable to query images', async () => {
-            const myErr = "There was error!";
+            const myErr = "There was an error!";
             sandbox.stub(connection, "query").yields(myErr);
             try {
                 await helpers.getImages();
@@ -46,6 +54,28 @@ describe('lib/helpers', () => {
             sandbox.stub(connection, "query").yields(null, ['dog']);
             const res = await helpers.getImages();
             expect(res[0]).to.equal('dog');
+        });
+    });
+
+    describe('selectImage', () => {
+
+        it('selects an image', async () => {
+            sandbox.stub(connection, "query").yields(null, [test_image]);
+            const res = await helpers.selectImage(test_image);
+            expect(res[0].id).to.equal(1);
+            expect(res[0].name).to.equal("test_image");
+        });
+    });
+
+
+
+    describe('insertImage', () => {
+
+        it('returns an image JSON object', async () => {
+            sandbox.stub(connection, "query").yields(null, test_image);
+            const res = await helpers.insertImage("test_image", "architecture");
+            console.log(res);
+            expect(res.id).to.equal(1);
         });
     });
 });

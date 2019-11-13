@@ -3,6 +3,7 @@ const cors = require('cors');
 const multer  = require('multer');
 const fs = require('fs');
 const connection = require('../routes/database').db;
+const helpers = require('../lib/helpers');
 
 const upload = express.Router();
 const bodyParser = require("body-parser");
@@ -41,7 +42,7 @@ upload.post('/',  (req, res, next) => {
         return next(err);
       }
   
-      if (rows.length != 0) { // The name is alread in the database
+      if (rows.length != 0) { // The name is already in the database
         mode = "REPLACE"
         updateID = rows[0].id
       }

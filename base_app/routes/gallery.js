@@ -25,19 +25,20 @@ gallery.get("/", urlencodedParser, async (req, res, next) => {
     }
 });
 
-gallery.post("/", urlencodedParser, (req, res, next) => {
+gallery.post("/", urlencodedParser, async (req, res, next) => {
 
     let name = req.body.img_name;
     let label = req.body.label;
 
-    //Look into SQL transaction
-    // Extract Insert, then test
     try {
         const addedImageRow = await insertImage(name, label);
+        console.log(`${label}/${name} added to the database`);
+        console.log("Godzilla 1");
+        console.log(addedImageRow);
         res.json(addedImageRow);
         res.status(201);
-        console.log(`${label}/${name} added to the database`);
     } catch (err) {
+        console.log("Mothra 1");
         res.status(500);
         res.json(err);
     }
