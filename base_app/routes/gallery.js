@@ -30,6 +30,8 @@ gallery.post("/", urlencodedParser, (req, res, next) => {
     let name = req.body.img_name;
     let label = req.body.label;
 
+    //Look into SQL transaction
+    // Extract Insert, then test
     connection.query("INSERT INTO `images` SET ?", {name: name, label: label}, (err, rows, fields) => {
         if (err) {
             res.status(400);
@@ -40,6 +42,8 @@ gallery.post("/", urlencodedParser, (req, res, next) => {
 
         res.status(201);
         console.log(`${label}/${name} added to the database`);
+
+        // Extract this, then test
         connection.query("SELECT * FROM `images` WHERE id = LAST_INSERT_ID()", (err, rows, fields) => {
             res.json(rows[0]);
         });

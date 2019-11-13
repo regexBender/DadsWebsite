@@ -4,27 +4,17 @@ const connection = require('../routes/database').db;
 const mockMysql = sinon.mock(require('mysql'));
 const helpers = require('../lib/helpers');
 
-
-// beforeEach(() => {
-//     mockMysql.expects('createConnection').returns({
-//       connect: () => {
-//         console.log('Succesfully connected');
-//       },
-//       query: (query, vars, callback) => {
-//         callback(null, succesfulDbInsert);
-//       },
-//       end: () => {
-//         console.log('Connection ended');
-//       }
-//     });
- 
-//   });
-//   after(() => {
-//     mockMysql.restore();
-//   });
- 
-
 describe('lib/helpers', () => {
+    let sandbox;
+
+    beforeEach(() => {
+        sandbox = sinon.createSandbox();
+    });
+
+    afterEach(() => {
+        sandbox.restore();
+    });
+
     describe('add', () => {
         it('adds numbers', () => {
             expect(helpers.add(1, 2)).to.equal(3);
@@ -34,63 +24,28 @@ describe('lib/helpers', () => {
     });
     describe('getImages', () => {
         it('returns an error if unable to query images', async () => {
-            // sinon.stub(connection, "query").returns({
-            //     query: (query, data, (stuff) => {
-
-            //     })
-            // });
-
-            // sinon.stub(database, "db").returns({
-            //     query: 'dog'
-            // });
-
-            // try {
-            //     let images = await helpers.getImages();
-                
-            //     expect(1).to.equal('You should never reach here.');
-            // } catch (err) {
-            //     expect(err).to.not.deep.equal('cat');
-            // }
-            expect(1).to.equal(1)
+            const myErr = "There was error!";
+            sandbox.stub(connection, "query").yields(myErr);
+            try {
+                await helpers.getImages();
+                expect(1).to.equal(2); // We should never get here.
+            } catch (err) {
+                expect(err).to.deep.equal(myErr);
+            }
         });
 
-        it('returns an empty array if no images present', () => {
-            expect(1).to.equal(1);
-
+        it('returns an empty array if no images present', async () => {
+            sandbox.stub(connection, "query").yields(null, []);
+            const res = await helpers.getImages();
+            expect(res).to.deep.equal([]);
         });
 
         it('returns images', async () => {
-            // let mock;
-            // let queryString = "SELECT * FROM `images`"
-            // let queryParams = null
-            // let rows = ['dog']
-
-            // mock = sinon.mock(require('mysql'))
-            // mock.expects('query').with(queryString, queryParams).yields(null, rows);
-            // mock.verify()
-
-            // mockMysql.expects('createConnection').returns({
-            //     connect: () => {
-            //       console.log('Succesfully connected');
-            //     },
-            //     query: (query, vars, callback) => {
-            //       callback(null, succesfulDbInsert);
-            //     },
-            //     end: () => {
-            //       console.log('Connection ended');
-            //     }
-            //   });
-            
             // https://stackoverflow.com/questions/54324649/using-sinon-to-stub-code-inside-a-promise-and-return-a-resolve
             // https://sinonjs.org/releases/v7.2.2/stubs/#stubyieldsarg1-arg2-
-            sinon.stub(connection, "query").yields(null, ['dog']);
-            let res = await helpers.getImages();
-console.log("Godzilla2")
-
-            return expect(res[0]).to.equal('dog');
-            //mock.restore()
-            // expect(1).to.equal(1);
-            done();
+            sandbox.stub(connection, "query").yields(null, ['dog']);
+            const res = await helpers.getImages();
+            expect(res[0]).to.equal('dog');
         });
     });
 });
