@@ -28,8 +28,28 @@ function getLastInsertedRow() {
     });
 }
 
+function insertImage(name, label) {
+    return new Promise((resolve, reject) => {
+        connection.query("INSERT INTO `images` SET ?", {name: name, label: label}, (err, rows, fields) => {
+            if (err) {
+                console.log(err);
+                reject(err);
+            } else {
+                try {
+                    const addedImageRow = getLastInsertedRow();
+                    resolve(addedImageRow);
+                } catch (err) {
+                    console.log(err);
+                    reject(err);
+                }
+            }   
+        });
+    });
+}
+
 module.exports = {
     add,
     getImages,
-    getLastInsertedRow
+    getLastInsertedRow,
+    insertImage
 };

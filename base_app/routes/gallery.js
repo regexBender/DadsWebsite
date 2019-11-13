@@ -32,21 +32,15 @@ gallery.post("/", urlencodedParser, (req, res, next) => {
 
     //Look into SQL transaction
     // Extract Insert, then test
-    connection.query("INSERT INTO `images` SET ?", {name: name, label: label}, (err, rows, fields) => {
-        if (err) {
-            res.status(400);
-            res.send(err);
-            console.log(err);
-            return next(err);
-        }
-
+    try {
+        const addedImageRow = await insertImage(name, label);
+        res.json(addedImageRow);
         res.status(201);
         console.log(`${label}/${name} added to the database`);
-
-        let addedImageRow = getLastInsertedRow();
-        res.json(addedImageRow);
-
-    });
+    } catch (err) {
+        res.status(500);
+        res.json(err);
+    }
 
 })
 
